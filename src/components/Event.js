@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Event = props => {
   const { name, url } = props.info;
@@ -35,6 +36,10 @@ const Event = props => {
       </div>
     </div>
   );
+};
+
+Event.propTypes = {
+  info: PropTypes.object.isRequired
 };
 
 export default Event;

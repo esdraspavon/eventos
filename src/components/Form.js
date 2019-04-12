@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 
 class Form extends Component {
   nameEventRef = React.createRef();
@@ -61,5 +62,10 @@ class Form extends Component {
     );
   }
 }
+
+Form.propTypes = {
+  getEvents: PropTypes.func.isRequired,
+  categories: PropTypes.array.isRequired
+};
 
 export default Form;
