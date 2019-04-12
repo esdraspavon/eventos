@@ -1,7 +1,20 @@
 import React, { Component } from "react";
 
 class Form extends Component {
+  showOptions = key => {
+    const category = this.props.categories[key];
+    const { id, name_localized } = category;
+    if (!id || !name_localized) return null;
+    return (
+      <option key={id} value={id}>
+        {name_localized}
+      </option>
+    );
+  };
+
   render() {
+    const categories = Object.keys(this.props.categories);
+
     return (
       <form>
         <fieldset className="uk-fieldset uk-margin">
@@ -18,7 +31,9 @@ class Form extends Component {
             </div>
 
             <div className="uk-margin" uk-margin="true">
-              <select className="uk-select" />
+              <select className="uk-select">
+                {categories.map(this.showOptions)}
+              </select>
             </div>
 
             <div className="uk-margin" uk-margin="true">
