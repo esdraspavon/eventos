@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "./components/Header";
 import Form from "./components/Form";
+import Events from "./components/Events";
 
 class App extends Component {
   token = "B7GX7TMDY5ZWIQZTTWCX";
@@ -48,6 +49,7 @@ class App extends Component {
         <Header />
         <div className="uk-container">
           <Form getEvents={this.getEvents} categories={this.state.categories} />
+          <Events events={this.state.events} />
         </div>
       </div>
     );
