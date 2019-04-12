@@ -10,9 +10,9 @@ class App extends Component {
   };
 
   componentDidMount() {
-    this.obtainCategories();
+    this.getCategories();
   }
-  obtainCategories = async () => {
+  getCategories = async () => {
     let url = `https://www.eventbriteapi.com/v3/categories/?token=${
       this.token
     }&locale=es_ES`;
@@ -26,12 +26,16 @@ class App extends Component {
       });
   };
 
+  getEvents = async query => {
+    console.log(query);
+  };
+
   render() {
     return (
       <div className="App">
         <Header />
         <div className="uk-container">
-          <Form categories={this.state.categories} />
+          <Form getEvents={this.getEvents} categories={this.state.categories} />
         </div>
       </div>
     );
