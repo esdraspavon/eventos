@@ -4,9 +4,11 @@ import Form from "./components/Form";
 
 class App extends Component {
   token = "B7GX7TMDY5ZWIQZTTWCX";
+  ordening = "date";
 
   state = {
-    categories: []
+    categories: [],
+    events: []
   };
 
   componentDidMount() {
@@ -27,7 +29,17 @@ class App extends Component {
   };
 
   getEvents = async query => {
-    console.log(query);
+    let url = `https://www.eventbriteapi.com/v3/events/search/?q=${
+      query.name
+    }&categories=${query.category}&token=${this.token}&locale=es_ES`;
+
+    await fetch(url)
+      .then(resp => {
+        return resp.json();
+      })
+      .then(events => {
+        this.setState({ events: events.events });
+      });
   };
 
   render() {
